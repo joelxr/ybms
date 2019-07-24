@@ -3,7 +3,7 @@
   margin: 1rem;
   border-radius: $card-border-radius;
   text-align: center;
-  background-color: #1A202C;
+  background-color: $bg-color-dark;
   max-width: $card-width;
 
   &.active {
@@ -22,7 +22,7 @@
     }
   }
   
-  .cover {
+  .cover{
     max-width: $card-width;
     max-height: $card-height;
     margin: 0 auto;

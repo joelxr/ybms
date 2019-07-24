@@ -6,7 +6,7 @@ import Menu from "./components/Menu";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import About from "./pages/About";
-import API from "./api";
+import { API } from "./api";
 import topMovies from "./const/topMovies";
 import topSeries from "./const/topSeries";
 
@@ -26,11 +26,33 @@ class App extends React.Component {
     };
   }
 
+  parseMovie(movie) {
+    return {
+      type: "movie",
+      id: movie.id,
+      title: movie.title,
+      releaseDate: movie.release_date,
+      posterUrl: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+      backdropUrl: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+    };
+  }
+
+  parseSeries(series) {
+    return {
+      type: "series",
+      id: series.id,
+      title: series.name,
+      releaseDate: series.first_air_date,
+      posterUrl: `https://image.tmdb.org/t/p/w500/${series.poster_path}`,
+      backdropUrl: `https://image.tmdb.org/t/p/original/${series.backdrop_path}`
+    };
+  }
+
   loadTopMovies() {
     topMovies.forEach(i => {
-      API.get("", { params: { i } }).then(({ data }) => {
+      API.get(`/movie/${i}`).then(({ data }) => {
         this.setState({
-          msList: [...this.state.msList, { Type: "Movie", ...data }]
+          msList: [...this.state.msList, this.parseMovie(data)]
         });
       });
     });
@@ -38,9 +60,9 @@ class App extends React.Component {
 
   loadTopSeries() {
     topSeries.forEach(i => {
-      API.get("", { params: { i } }).then(({ data }) => {
+      API.get(`/tv/${i}`).then(({ data }) => {
         this.setState({
-          msList: [...this.state.msList, { type: "Series", ...data }]
+          msList: [...this.state.msList, this.parseSeries(data)]
         });
       });
     });

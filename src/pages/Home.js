@@ -11,7 +11,7 @@ import Card from "../components/Card";
 import SideBar from "../components/SideBar";
 
 class Home extends React.Component {
-  state = { type: "movie", sorting: { prop: "Released", order: "ASC" } };
+  state = { type: "movie", sorting: { prop: "releaseDate", order: "ASC" } };
 
   onToggleContent = type => {
     this.setState({ type });
@@ -20,13 +20,13 @@ class Home extends React.Component {
   onSetSortOrder = () => {
     switch (this.state.sorting.order) {
       case "ASC":
-        this.setState({ sorting: { prop: "Released", order: "DESC" } });
+        this.setState({ sorting: { prop: "releaseDate", order: "DESC" } });
         break;
       case "DESC":
-        this.setState({ sorting: { prop: "Released", order: "" } });
+        this.setState({ sorting: { prop: "releaseDate", order: "" } });
         break;
       default:
-        this.setState({ sorting: { prop: "Released", order: "ASC" } });
+        this.setState({ sorting: { prop: "releaseDate", order: "ASC" } });
     }
   };
 
@@ -89,10 +89,10 @@ class Home extends React.Component {
             </div>
             <div className="cards">
               {context.msList
-                .filter(ms => ms.Type === this.state.type)
+                .filter(ms => ms.type === this.state.type)
                 .sort(this.sortContent)
-                .map(ms => (
-                  <Card key={ms.imdbID} data={ms} />
+                .map((ms, index) => (
+                  <Card key={ms.id} data={ms} index={index} />
                 ))}
             </div>
             <div>

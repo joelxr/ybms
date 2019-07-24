@@ -1,12 +1,11 @@
 import axios from "axios";
 
-const URL = "http://www.omdbapi.com";
+const URL = "https://api.themoviedb.org/3";
 
-const API = axios.create({
+export const API = axios.create({
   baseURL: URL,
   params: {
-    apikey: 98477287
+    api_key: "f4afe2396f2c320d0cacf1a09abd39a1",
+    language: "en-US"
   }
 });
-
-export default API;

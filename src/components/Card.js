@@ -14,7 +14,10 @@ class Card extends React.Component {
   };
 
   render() {
-    const { Poster, Title, Year } = this.props.data;
+    const {
+      data: { posterUrl, backdropUrl, title, releaseDate },
+      index
+    } = this.props;
 
     return (
       <Consumer>
@@ -25,10 +28,13 @@ class Card extends React.Component {
             onMouseLeave={this.onMouseLeave}
           >
             <div className="cover">
-              <img src={Poster} alt="Poster" />
+              <img
+                src={index === 0 ? `${backdropUrl}` : `${posterUrl}`}
+                alt="Poster"
+              />
             </div>
             <div className="title">
-              {Year} {Title}
+              {title} ({releaseDate.slice(0, 4)})
             </div>
             <div className="btns">
               <button
