@@ -1,0 +1,84 @@
+.card {
+  position: relative;
+  margin: 1rem;
+  border-radius: $card-border-radius;
+  text-align: center;
+  background-color: #1A202C;
+  max-width: $card-width;
+
+
+  &.active {
+    .cover {
+      img {
+        opacity: 0.2;
+      }
+    }
+
+    .title {
+      opacity: 0.2;
+    }
+
+    .btns {
+      opacity: 1;
+    }
+  }
+  
+  .cover {
+    max-width: $card-width;
+    max-height: $card-height;
+    margin: 0 auto;
+    z-index: 100;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-top-left-radius: $card-border-radius;
+      border-top-right-radius: $card-border-radius;
+      opacity: 1;
+    }
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.759rem;
+    color: white;
+    margin: 0 .2rem .4rem .2rem;
+    height: 32px;
+  }
+  
+  .btns {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+
+    .btn {
+      background-color: transparent;
+      border: none;
+      margin: .3rem 0;
+      padding: 0.4rem 0.6rem 0.2rem 0.6rem;
+      fill: white;
+      color: white;
+      font-size: 2.69rem;
+
+      &:hover {
+        fill: $card-btn-hover-color;
+        color: $card-btn-hover-color;
+      }
+
+      .hint {
+        display: block;
+        font-size: .6rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

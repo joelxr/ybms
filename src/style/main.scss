@@ -1,0 +1,25 @@
+@import "../../node_modules/normalize.css/normalize.css";
+
+@import "./fonts.scss";
+@import "./colors.scss";
+
+@import "./components/menu.scss";
+@import "./components/card.scss";
+
+body {
+  background-color: $bg-color;
+  font-family: $font-family;
+  color: $color;
+}
+
+.content {
+  padding: 0 1rem;
+  margin-top: 20px;
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
