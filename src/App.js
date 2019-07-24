@@ -18,7 +18,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      msList: []
+      msList: [],
+      msSelected: {},
+      handleDetailClick: this.handleDetailClick,
+      handleFavoriteClick: this.hnadleFavoriteClick,
+      handleCloseSidebar: this.handleCloseSidebar
     };
   }
 
@@ -41,6 +45,22 @@ class App extends React.Component {
       });
     });
   }
+
+  handleDetailClick = ms => {
+    this.setState({
+      msSelected: ms
+    });
+  };
+
+  handleFavoriteClick = event => {
+    console.log(event);
+  };
+
+  handleCloseSidebar = () => {
+    this.setState({
+      msSelected: {}
+    });
+  };
 
   componentDidMount() {
     this.loadTopMovies();

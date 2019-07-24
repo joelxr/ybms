@@ -1,0 +1,129 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+
+  .card:first-child {
+		grid-column: 1 / 7;
+    
+    max-width: none;
+    max-height: 60vh;
+    width: 100%;
+    border-radius: 0;
+    position:relative;
+    overflow:hidden;
+
+    .cover {
+      max-width: none;
+      max-height: none;
+      width: 100%;
+      height: auto;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform:translateY(-50%) translateX(-50%);
+      opacity: 0.3;
+    }
+
+    .title {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 2.1rem;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 80px;
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: .6rem 1rem;
+    border: 0;
+    fill: $accent-color;
+    color: $accent-color;
+    background-color: transparent;
+    border: 1px solid $accent-color;
+    font-size: 1.2rem;
+    
+    &.active,
+    &:hover {
+      background-color: $accent-color;
+      color: white;
+      fill: white;
+    }
+    
+    .hint {
+      margin-left: 0.4rem;
+      font-size: 0.759rem;
+    }
+  }
+
+  .contentToggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .btn:first-child {
+      border-top-left-radius: $card-border-radius;  
+      border-bottom-left-radius: $card-border-radius;
+      border-right-width: .5px;
+    }
+    
+    .btn:last-child {
+      border-top-right-radius: $card-border-radius;  
+      border-bottom-right-radius: $card-border-radius;
+      border-left-width: .5px;
+    }
+  }
+
+  .btn.sorting {
+    border-radius: $card-border-radius;
+    margin-left: 0.8rem;
+  }
+}
+
+@media (max-width: 1024px) { 
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    .card:first-child {
+      grid-column: 1 / 6;
+    }
+  }
+}
+
+
+@media (max-width: 768px) { 
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    .card:first-child {
+      grid-column: 1 / 5;
+    }
+  }
+}
+
+@media (max-width: 640px) { 
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    .card:first-child {
+      grid-column: 1 / 3;
+    }
+  }
+}

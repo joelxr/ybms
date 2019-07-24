@@ -6,7 +6,6 @@
   background-color: #1A202C;
   max-width: $card-width;
 
-
   &.active {
     .cover {
       img {
@@ -27,7 +26,6 @@
     max-width: $card-width;
     max-height: $card-height;
     margin: 0 auto;
-    z-index: 100;
 
     img {
       width: 100%;

@@ -5,6 +5,9 @@
 
 @import "./components/menu.scss";
 @import "./components/card.scss";
+@import "./components/sidebar.scss";
+
+@import "./pages/home.scss";
 
 body {
   background-color: $bg-color;
@@ -13,13 +16,5 @@ body {
 }
 
 .content {
-  padding: 0 1rem;
-  margin-top: 20px;
-}
-
-.cards {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
+  margin-top: 60px;
 }

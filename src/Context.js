@@ -1,7 +1,10 @@
 import React from "react";
 
 const Context = React.createContext({
-  msList: []
+  msList: [],
+  handleDetailClick() {},
+  handleFavoriteClick() {},
+  handleCloseSidebar() {}
 });
 
 export const Provider = Context.Provider;
