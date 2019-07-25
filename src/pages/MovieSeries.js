@@ -152,7 +152,7 @@ class Movie extends React.Component {
                             type="text/html"
                             width="320"
                             height="180"
-                            src={`http://www.youtube.com/embed/${v.key}?autoplay=0`}
+                            src={`http://www.youtube.com/embed/${v.key}?enablejsapi=1&origin=http://www.ybms.joelxr.dev&autoplay=0`}
                             frameBorder="0"
                           />
                         </div>
