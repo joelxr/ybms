@@ -6,8 +6,9 @@ class About extends React.Component {
     return (
       <Consumer>
         {() => (
-          <div>
-            <h1>About</h1>
+          <div className="about">
+            <h1>Motivation</h1>
+            <p>This is YBMS (Your Beloved Movies and Series).</p>
           </div>
         )}
       </Consumer>
