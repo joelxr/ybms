@@ -5,6 +5,7 @@
   text-align: center;
   background-color: $bg-color-dark;
   max-width: $card-width;
+  font-family: $title-font-family;
 
   &.active {
     .cover {

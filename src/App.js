@@ -6,7 +6,7 @@ import Menu from "./components/Menu";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import About from "./pages/About";
-import { API } from "./api";
+import { TMDB } from "./service/api";
 import topMovies from "./const/topMovies";
 import topSeries from "./const/topSeries";
 
@@ -19,9 +19,10 @@ class App extends React.Component {
 
     this.state = {
       msList: [],
+      msFavored: [],
       msSelected: {},
       handleDetailClick: this.handleDetailClick,
-      handleFavoriteClick: this.hnadleFavoriteClick,
+      handleFavoriteClick: this.handleFavoriteClick,
       handleCloseSidebar: this.handleCloseSidebar
     };
   }
@@ -30,10 +31,15 @@ class App extends React.Component {
     return {
       type: "movie",
       id: movie.id,
+      imdbId: movie.imdb_id,
       title: movie.title,
       releaseDate: movie.release_date,
+      year: movie.release_date.slice(0, 4),
       posterUrl: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-      backdropUrl: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+      backdropUrl: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
+      description: movie.overview,
+      runtime: `${movie.runtime} min`,
+      rating: movie.popularity
     };
   }
 
@@ -41,18 +47,27 @@ class App extends React.Component {
     return {
       type: "series",
       id: series.id,
+      imdbId: series.imdb_id,
       title: series.name,
       releaseDate: series.first_air_date,
+      year: series.first_air_date.slice(0, 4),
       posterUrl: `https://image.tmdb.org/t/p/w500/${series.poster_path}`,
-      backdropUrl: `https://image.tmdb.org/t/p/original/${series.backdrop_path}`
+      backdropUrl: `https://image.tmdb.org/t/p/original/${series.backdrop_path}`,
+      description: series.overview,
+      runtime: `${series.number_of_seasons} seasons, ${
+        series.number_of_episodes
+      } episodes, about ${series.episode_run_time[0]} min per episode`,
+      rating: series.popularity
     };
   }
 
   loadTopMovies() {
     topMovies.forEach(i => {
-      API.get(`/movie/${i}`).then(({ data }) => {
+      TMDB.get(`/movie/${i}`).then(({ data }) => {
+        let movie = this.parseMovie(data);
+
         this.setState({
-          msList: [...this.state.msList, this.parseMovie(data)]
+          msList: [...this.state.msList, movie]
         });
       });
     });
@@ -60,7 +75,7 @@ class App extends React.Component {
 
   loadTopSeries() {
     topSeries.forEach(i => {
-      API.get(`/tv/${i}`).then(({ data }) => {
+      TMDB.get(`/tv/${i}`).then(({ data }) => {
         this.setState({
           msList: [...this.state.msList, this.parseSeries(data)]
         });
@@ -74,8 +89,21 @@ class App extends React.Component {
     });
   };
 
-  handleFavoriteClick = event => {
-    console.log(event);
+  handleFavoriteClick = ms => {
+    let index = this.state.msFavored.findIndex(ms2 => ms.id === ms2.id);
+
+    if (~index) {
+      var newFavoredList = this.state.msFavored;
+      newFavoredList.splice(index, 1);
+
+      this.setState({
+        msFavored: newFavoredList
+      });
+    } else {
+      this.setState({
+        msFavored: [...this.state.msFavored, ms]
+      });
+    }
   };
 
   handleCloseSidebar = () => {

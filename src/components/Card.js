@@ -1,5 +1,9 @@
 import React from "react";
-import { InfoOutline, HeartOutline } from "@forefront-ux/react-eva-icons";
+import {
+  InfoOutline,
+  HeartOutline,
+  Heart
+} from "@forefront-ux/react-eva-icons";
 import { Consumer } from "../Context";
 
 class Card extends React.Component {
@@ -13,9 +17,14 @@ class Card extends React.Component {
     this.setState({ mouseOver: false });
   };
 
+  isFavored = (msFavored, id) => {
+    const index = msFavored.findIndex(ms => ms.id === id);
+    return ~index;
+  };
+
   render() {
     const {
-      data: { posterUrl, backdropUrl, title, releaseDate },
+      data: { posterUrl, backdropUrl, title, year },
       index
     } = this.props;
 
@@ -34,7 +43,7 @@ class Card extends React.Component {
               />
             </div>
             <div className="title">
-              {title} ({releaseDate.slice(0, 4)})
+              {title} ({year})
             </div>
             <div className="btns">
               <button
@@ -48,10 +57,24 @@ class Card extends React.Component {
               <button
                 type="button"
                 className="btn"
-                onClick={context.handleFavoriteClick}
+                onClick={() => context.handleFavoriteClick(this.props.data)}
               >
-                <HeartOutline />
-                <span className="hint">Favorite</span>
+                {(() => {
+                  if (context.msFavored.includes(this.props.data))
+                    return (
+                      <span style={{ fill: "#E53E3E" }}>
+                        <Heart />
+                        <span className="hint"> Favorite</span>
+                      </span>
+                    );
+                  else
+                    return (
+                      <span>
+                        <HeartOutline />
+                        <span className="hint"> Favorite</span>
+                      </span>
+                    );
+                })()}
               </button>
             </div>
           </div>

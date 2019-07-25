@@ -2,16 +2,18 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-items: center;
+}
 
+.home {
   .card:first-child {
-		grid-column: 1 / 7;
+    grid-column: 1 / 7;
     
     max-width: none;
     max-height: 60vh;
     width: 100%;
     border-radius: 0;
-    position:relative;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
 
     .cover {
       max-width: none;

@@ -4,7 +4,107 @@
   right: 0;
   z-index: 600;
   height: 100vh;
-  width: 60vw;
-  background-color: $bg-color;
-  box-shadow: -1px 0 0 1px rgba(0, 0, 0, .25);  
+  width: 42vw;
+  background-color: $bg-color-dark;
+  box-shadow: -1px 0 0 1px rgba(0, 0, 0, .25);
+  transition: all ease .2s;
+  
+  &.hidden {
+    transform: scaleX(0);
+    transform-origin: right
+  }
+
+  &.active {
+    transform: scaleX(1);
+    transform-origin: right
+  }
+
+  .body {
+    position: relative;
+
+    .closeBtn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: none;
+      background-color: transparent;
+      fill: white;
+      font-size: 2rem;
+      z-index: 1000;
+
+      &:hover {
+        fill: $accent-color;
+      }
+    }
+
+    .header {
+      position: relative;
+      width: 100%;
+      max-height: 300px;
+      overflow: hidden;
+      
+      .backdrop {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        left: 0;
+        opacity: 0.2;
+      }
+
+      .headerContent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 300px;
+        
+        .poster {
+          width: 140px;
+          margin: 1rem;
+          border-radius: 8px;
+        }
+
+        .headerTitle {
+          font-family: $title-font-family;
+          font-size: 3.8rem;
+          color: white;
+          margin: 1rem;
+        }
+
+        .headerSubtitle {
+          font-size: 2rem;
+          color: white;
+          margin: 1rem;
+        }
+      }
+    }
+
+    .content {
+      margin: 1rem;
+
+      .contentDescription {
+        color:  white;
+        font-size: 1.1rem;
+        line-height: 1.6rem;
+      }
+
+      .contentInfo {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 1.1rem;
+        line-height: 1.6rem;
+        color: white;
+        fill: white;
+
+        > * {
+          margin: 1rem;
+        }
+      }
+    }
+  }
 }
