@@ -22,8 +22,8 @@
       opacity: 1;
     }
   }
-  
-  .cover{
+
+  .cover {
     max-width: $card-width;
     max-height: $card-height;
     margin: 0 auto;
@@ -43,10 +43,10 @@
     align-items: center;
     font-size: 0.759rem;
     color: white;
-    margin: 0 .2rem .4rem .2rem;
+    margin: 0 0.2rem 0.4rem 0.2rem;
     height: 32px;
   }
-  
+
   .btns {
     position: absolute;
     top: 0;
@@ -62,7 +62,7 @@
     .btn {
       background-color: transparent;
       border: none;
-      margin: .3rem 0;
+      margin: 0.3rem 0;
       padding: 0.4rem 0.6rem 0.2rem 0.6rem;
       fill: white;
       color: white;
@@ -71,11 +71,12 @@
       &:hover {
         fill: $card-btn-hover-color;
         color: $card-btn-hover-color;
+        cursor: pointer;
       }
 
       .hint {
         display: block;
-        font-size: .6rem;
+        font-size: 0.6rem;
         text-transform: uppercase;
       }
     }

@@ -1,5 +1,5 @@
 .menu {
-  position:  fixed;
+  position: fixed;
   top: 0;
   width: 100%;
   display: flex;
@@ -24,7 +24,7 @@
       font-weight: bolder;
       text-transform: uppercase;
     }
-    
+
     .subtitle {
       color: $menu-color;
       font-style: italic;
@@ -48,6 +48,7 @@
         color: $menu-item-hover-color;
         font-weight: bolder;
         border-bottom: 4px solid $menu-item-hover-color;
+        cursor: pointer;
       }
     }
   }

@@ -11,15 +11,15 @@
   margin: 8rem;
   padding: 2rem;
   font-size: 1.2rem;
-  background-color: #2A4365;
-  color: #BEE3F8;
+  background-color: #2a4365;
+  color: #bee3f8;
   border-radius: 12px;
 }
 
 .home {
   .card:first-child {
     grid-column: 1 / 7;
-    
+
     max-width: none;
     max-height: 60vh;
     width: 100%;
@@ -46,7 +46,8 @@
       padding: 2rem;
       text-align: center;
       font-size: 2.2rem;
-      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
     }
   }
 }
@@ -63,21 +64,22 @@
     justify-content: center;
     align-items: center;
     margin: 0;
-    padding: .6rem 1rem;
+    padding: 0.6rem 1rem;
     border: 0;
     fill: $accent-color;
     color: $accent-color;
     background-color: transparent;
     border: 1px solid $accent-color;
     font-size: 1.2rem;
-    
+
     &.active,
     &:hover {
       background-color: $accent-color;
       color: white;
       fill: white;
+      cursor: pointer;
     }
-    
+
     .hint {
       margin-left: 0.4rem;
       font-size: 0.759rem;
@@ -88,17 +90,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     .btn:first-child {
-      border-top-left-radius: $card-border-radius;  
+      border-top-left-radius: $card-border-radius;
       border-bottom-left-radius: $card-border-radius;
-      border-right-width: .5px;
+      border-right-width: 0.5px;
     }
-    
+
     .btn:last-child {
-      border-top-right-radius: $card-border-radius;  
+      border-top-right-radius: $card-border-radius;
       border-bottom-right-radius: $card-border-radius;
-      border-left-width: .5px;
+      border-left-width: 0.5px;
     }
   }
 
@@ -108,7 +110,7 @@
   }
 }
 
-@media (max-width: 1024px) { 
+@media (max-width: 1024px) {
   .cards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -119,8 +121,7 @@
   }
 }
 
-
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
   .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -131,7 +132,7 @@
   }
 }
 
-@media (max-width: 640px) { 
+@media (max-width: 640px) {
   .cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

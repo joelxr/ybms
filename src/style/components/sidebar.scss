@@ -6,17 +6,17 @@
   height: 100%;
   width: 42vw;
   background-color: $bg-color-dark;
-  box-shadow: -1px 0 0 1px rgba(0, 0, 0, .25);
-  transition: all ease .2s;
+  box-shadow: -1px 0 0 1px rgba(0, 0, 0, 0.25);
+  transition: all ease 0.2s;
 
   &.hidden {
     transform: scaleX(0);
-    transform-origin: right
+    transform-origin: right;
   }
 
   &.active {
     transform: scaleX(1);
-    transform-origin: right
+    transform-origin: right;
   }
 
   .body {
@@ -34,6 +34,7 @@
 
       &:hover {
         fill: $accent-color;
+        cursor: pointer;
       }
     }
 
@@ -42,7 +43,7 @@
       width: 100%;
       max-height: 300px;
       overflow: hidden;
-      
+
       .backdrop {
         width: 100%;
         height: auto;
@@ -61,7 +62,7 @@
         align-items: center;
         width: 100%;
         height: 300px;
-        
+
         .poster {
           width: 140px;
           margin: 1rem;
@@ -88,7 +89,7 @@
 
       .contentDescription {
         margin: 1rem;
-        color:  white;
+        color: white;
         font-size: 1.1rem;
         line-height: 1.6rem;
       }
@@ -113,7 +114,7 @@
         }
       }
     }
-  
+
     .footer {
       display: flex;
       justify-content: center;
@@ -122,24 +123,24 @@
       margin-top: 3rem;
 
       .btn {
-
         &.liked {
-          fill: #E53E3E;
-          color: #E53E3E;
-          border-color: #E53E3E;
+          fill: #e53e3e;
+          color: #e53e3e;
+          border-color: #e53e3e;
 
           &:hover {
-            background-color: #E53E3E;
+            background-color: #e53e3e;
             color: white;
             fill: white;
+            cursor: pointer;
           }
         }
 
         display: flex;
         justify-content: center;
-        align-items: center;        
+        align-items: center;
         margin: 0 1rem;
-        padding: .6rem 1rem;
+        padding: 0.6rem 1rem;
         border: 0;
         fill: $accent-color;
         color: $accent-color;
@@ -153,6 +154,7 @@
           background-color: $accent-color;
           color: white;
           fill: white;
+          cursor: pointer;
         }
 
         .hint {
