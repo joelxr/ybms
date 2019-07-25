@@ -1,0 +1,22 @@
+.about {
+  width: 100%;
+  margin-top: 6rem;
+
+  .aboutContent {
+    width: 60%;
+    margin: 0 auto;
+    padding: .6rem 1rem;
+    background-color: $bg-color-dark;
+    border-radius: 12px;
+
+    h1, h2 {
+      font-family: $title-font-family;
+      color: $accent-color;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8rem;
+    }
+  }
+}
