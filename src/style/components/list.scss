@@ -4,6 +4,18 @@
   justify-items: center;
 }
 
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8rem;
+  padding: 2rem;
+  font-size: 1.2rem;
+  background-color: #2A4365;
+  color: #BEE3F8;
+  border-radius: 12px;
+}
+
 .home {
   .card:first-child {
     grid-column: 1 / 7;
@@ -31,10 +43,9 @@
       bottom: 0;
       width: 100%;
       margin: 0 auto;
-      padding: 1rem;
-      background-color: $bg-color-dark;
+      padding: 2rem;
       text-align: center;
-      font-size: 2.1rem;
+      font-size: 2.2rem;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     }
   }

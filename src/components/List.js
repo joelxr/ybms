@@ -48,54 +48,72 @@ class Home extends React.Component {
 
     return (
       <div>
-        <div className="toolbar">
-          <div className="contentToggle">
-            <button
-              type="buttom"
-              className={this.state.type === "movie" ? "btn active" : "btn"}
-              onClick={() => this.onToggleContent("movie")}
-            >
-              <FilmOutline />
-              <span className="hint">Movies</span>
-            </button>
-            <button
-              type="buttom"
-              className={this.state.type === "series" ? "btn active" : "btn"}
-              onClick={() => this.onToggleContent("series")}
-            >
-              <TvOutline />
-              <span className="hint">Series</span>
-            </button>
-          </div>
-          <button
-            type="button"
-            className="btn sorting"
-            onClick={this.onSetSortOrder}
-          >
-            {(() => {
-              switch (this.state.sorting.order) {
-                case "ASC":
-                  return <ArrowUpwardOutline />;
-                case "DESC":
-                  return <ArrowDownwardOutline />;
-                default:
-                  return <MinusOutline />;
-              }
-            })()}
-            <span className="hint">Released date</span>
-          </button>
-        </div>
-        <div className="cards">
-          {list
-            .filter(ms => ms.type === this.state.type)
-            .sort(this.sortContent)
-            .map((ms, index) => (
-              <Card key={ms.id} data={ms} index={noBanner ? ++index : index} />
-            ))}
-        </div>
-        <div>
-          <SideBar />
-        </div>
+        {(() => {
+          if (list.length) {
+            return (
+              <div>
+                <div className="toolbar">
+                  <div className="contentToggle">
+                    <button
+                      type="buttom"
+                      className={
+                        this.state.type === "movie" ? "btn active" : "btn"
+                      }
+                      onClick={() => this.onToggleContent("movie")}
+                    >
+                      <FilmOutline />
+                      <span className="hint">Movies</span>
+                    </button>
+                    <button
+                      type="buttom"
+                      className={
+                        this.state.type === "series" ? "btn active" : "btn"
+                      }
+                      onClick={() => this.onToggleContent("series")}
+                    >
+                      <TvOutline />
+                      <span className="hint">Series</span>
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn sorting"
+                    onClick={this.onSetSortOrder}
+                  >
+                    {(() => {
+                      switch (this.state.sorting.order) {
+                        case "ASC":
+                          return <ArrowUpwardOutline />;
+                        case "DESC":
+                          return <ArrowDownwardOutline />;
+                        default:
+                          return <MinusOutline />;
+                      }
+                    })()}
+                    <span className="hint">Released date</span>
+                  </button>
+                </div>
+                <div className="cards">
+                  {list
+                    .filter(ms => ms.type === this.state.type)
+                    .sort(this.sortContent)
+                    .map((ms, index) => (
+                      <Card
+                        key={ms.id}
+                        data={ms}
+                        index={noBanner ? ++index : index}
+                      />
+                    ))}
+                </div>
+                <div>
+                  <SideBar />
+                </div>
+              </div>
+            );
+          } else {
+            return <div className="alert">Nothing to show here...</div>;
+          }
+        })()}
       </div>
     );
   }

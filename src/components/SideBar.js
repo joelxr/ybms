@@ -3,7 +3,9 @@ import { Consumer } from "../Context";
 import {
   CloseOutline,
   ClockOutline,
-  AwardOutline
+  AwardOutline,
+  HeartOutline,
+  Heart
 } from "@forefront-ux/react-eva-icons";
 
 class SideBar extends React.Component {
@@ -73,6 +75,37 @@ class SideBar extends React.Component {
                     <AwardOutline />
                     {context.msSelected.rating}
                   </div>
+                </div>
+
+                <div className="footer">
+                  {(() => {
+                    if (context.msFavored.includes(context.msSelected))
+                      return (
+                        <button
+                          type="button"
+                          className="btn liked"
+                          onClick={() =>
+                            context.handleFavoriteClick(context.msSelected)
+                          }
+                        >
+                          <Heart />
+                          <span className="hint"> Favorite</span>
+                        </button>
+                      );
+                    else
+                      return (
+                        <button
+                          type="button"
+                          className="btn"
+                          onClick={() =>
+                            context.handleFavoriteClick(context.msSelected)
+                          }
+                        >
+                          <HeartOutline />
+                          <span className="hint"> Favorite</span>
+                        </button>
+                      );
+                  })()}
                 </div>
               </div>
             </div>

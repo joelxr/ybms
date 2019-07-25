@@ -2,6 +2,17 @@ import React from "react";
 import { Consumer } from "../Context";
 import { Link } from "@reach/router";
 
+const NavLink = props => (
+  <Link
+    {...props}
+    getProps={({ isCurrent }) => {
+      return {
+        className: isCurrent ? "link active" : "link"
+      };
+    }}
+  />
+);
+
 class Menu extends React.Component {
   render() {
     return (
@@ -13,15 +24,15 @@ class Menu extends React.Component {
               <div className="subtitle">Your beloved movies and series</div>
             </div>
             <div className="right">
-              <Link className="link" to="/">
+              <NavLink className="link" to="/">
                 Home
-              </Link>
-              <Link className="link" to="/favorites">
+              </NavLink>
+              <NavLink className="link" to="/favorites">
                 Favorites
-              </Link>
-              <Link className="link" to="/about">
+              </NavLink>
+              <NavLink className="link" to="/about">
                 About
-              </Link>
+              </NavLink>
             </div>
           </div>
         )}

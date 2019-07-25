@@ -43,7 +43,7 @@
       border-bottom: 4px solid transparent;
       font-weight: bolder;
 
-      
+      &.active,
       &:hover {
         color: $menu-item-hover-color;
         font-weight: bolder;
