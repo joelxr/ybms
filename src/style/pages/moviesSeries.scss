@@ -1,0 +1,203 @@
+.ms {
+  .header {
+    position: relative;
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    
+    .backdrop {
+      width: 100%;
+      height: auto;
+      position: relative;
+      top: 0;
+      left: 0;
+      opacity: 0.2;
+    }
+
+    .headerContent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 300px;
+      
+      .poster {
+        width: 140px;
+        margin: 1rem;
+        border-radius: 8px;
+      }
+
+      .headerTitle {
+        font-family: $title-font-family;
+        font-size: 3.8rem;
+        color: white;
+        margin: 1rem;
+      }
+
+      .headerSubtitle {
+        font-size: 2rem;
+        color: white;
+        margin: 1rem;
+      }
+
+      .btn {
+
+        &.liked {
+          fill: #E53E3E;
+          color: #E53E3E;
+          border-color: #E53E3E;
+
+          &:hover {
+            background-color: #E53E3E;
+            color: white;
+            fill: white;
+          }
+        }
+
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+        width: 64px;
+        height: 64px;
+        margin: 0 1rem;
+        padding: .6rem 1rem;
+        border: 0;
+        fill: $accent-color;
+        color: $accent-color;
+        background-color: transparent;
+        border: 2px solid $accent-color;
+        font-size: 1.8rem;
+        border-radius: 100%;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $accent-color;
+          color: white;
+          fill: white;
+        }
+
+        .hint {
+          margin-left: 0.4rem;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .content {
+    margin: 3rem;
+
+    h2 {
+      font-weight: 600;
+      font-family: $title-font-family;
+    }
+
+    .contentDescription {
+      margin: 1rem;
+      color:  white;
+      font-size: 1.1rem;
+      line-height: 1.6rem;
+    }
+
+    .contentInfoWrapper {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      .contentInfo {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 1.1rem;
+        line-height: 1.6rem;
+        color: white;
+        fill: white;
+
+        > * {
+          margin: 1rem;
+        }
+      }
+    }
+
+    .cast {
+      display: flex;
+      overflow-y: auto;
+      
+      .castItem {
+        position: relative;
+        margin: 0.5rem;
+        padding: 0.2rem 1.6rem;
+        border-radius: 12px;
+
+        .avatar {
+          position: relative;
+          width: 96px;
+          height: 96px;
+          margin: 10px auto;
+          border-radius: 100%;
+          overflow: hidden;
+
+          img {
+            max-width: 96px;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+          }
+        }
+
+        .info {
+          text-align: center;
+          vertical-align: middle;
+          font-family: $title-font-family;
+
+          .character {
+            font-size: .8rem;
+          }
+
+          .name {
+            color: $accent-color;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .reviews {
+      margin: 1rem;
+
+      .review {
+        padding: .6rem 1rem;
+        border-radius: 12px;
+        background-color: $bg-color-dark;
+
+        .reviewText {
+          font-size: 1rem;
+          line-height: 1.4rem;
+        }
+
+        .reviewAuthor {
+          font-family: $title-font-family;
+          color: $accent-color;
+          font-size: .8rem;
+        }
+      }
+    }
+
+    .videos {
+      display: flex;
+      justify-content: flex-start;
+      
+      .video {
+        margin: 1rem;
+      }
+    }
+  }
+}

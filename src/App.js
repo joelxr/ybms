@@ -5,8 +5,10 @@ import { Router } from "@reach/router";
 import Menu from "./components/Menu";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
+import MovieSeries from "./pages/MovieSeries";
 import About from "./pages/About";
 import { TMDB } from "./service/api";
+import { parseMovie, parseSeries } from "./util/parse";
 import topMovies from "./const/topMovies";
 import topSeries from "./const/topSeries";
 
@@ -27,60 +29,45 @@ class App extends React.Component {
     };
   }
 
-  parseMovie(movie) {
-    return {
-      type: "movie",
-      id: movie.id,
-      imdbId: movie.imdb_id,
-      title: movie.title,
-      releaseDate: movie.release_date,
-      year: movie.release_date.slice(0, 4),
-      posterUrl: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-      backdropUrl: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
-      description: movie.overview,
-      runtime: `${movie.runtime} min`,
-      rating: movie.popularity
-    };
-  }
+  loadAll() {
+    let moviesList = [];
+    let seriesList = [];
+    let msList = JSON.parse(localStorage.getItem("msList"));
 
-  parseSeries(series) {
-    return {
-      type: "series",
-      id: series.id,
-      imdbId: series.imdb_id,
-      title: series.name,
-      releaseDate: series.first_air_date,
-      year: series.first_air_date.slice(0, 4),
-      posterUrl: `https://image.tmdb.org/t/p/w500/${series.poster_path}`,
-      backdropUrl: `https://image.tmdb.org/t/p/original/${series.backdrop_path}`,
-      description: series.overview,
-      runtime: `${series.number_of_seasons} seasons, ${
-        series.number_of_episodes
-      } episodes, about ${series.episode_run_time[0]} min per episode`,
-      rating: series.popularity
-    };
+    if (msList && msList.length) {
+      this.setState({ msList });
+      return;
+    }
+
+    this.loadTopMovies().then(movies => {
+      moviesList = movies.map(m => parseMovie(m.data));
+      this.loadTopSeries().then(series => {
+        seriesList = series.map(s => parseSeries(s.data));
+        msList = [...moviesList, ...seriesList];
+        localStorage.setItem("msList", JSON.stringify(msList));
+        this.setState({ msList });
+      });
+    });
   }
 
   loadTopMovies() {
-    topMovies.forEach(i => {
-      TMDB.get(`/movie/${i}`).then(({ data }) => {
-        let movie = this.parseMovie(data);
+    let requests = [];
 
-        this.setState({
-          msList: [...this.state.msList, movie]
-        });
-      });
+    topMovies.forEach(i => {
+      requests.push(TMDB.get(`/movie/${i}`));
     });
+
+    return Promise.all(requests);
   }
 
   loadTopSeries() {
+    let requests = [];
+
     topSeries.forEach(i => {
-      TMDB.get(`/tv/${i}`).then(({ data }) => {
-        this.setState({
-          msList: [...this.state.msList, this.parseSeries(data)]
-        });
-      });
+      requests.push(TMDB.get(`/tv/${i}`));
     });
+
+    return Promise.all(requests);
   }
 
   handleDetailClick = ms => {
@@ -113,8 +100,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.loadTopMovies();
-    this.loadTopSeries();
+    this.loadAll();
   }
 
   render() {
@@ -127,6 +113,7 @@ class App extends React.Component {
               <Home path="/" />
               <Favorites path="/favorites" />
               <About path="/about" />
+              <MovieSeries path="/detail/:type/:id" />
             </Router>
           </div>
         </Provider>

@@ -5,8 +5,10 @@ import {
   ClockOutline,
   AwardOutline,
   HeartOutline,
+  EyeOutline,
   Heart
 } from "@forefront-ux/react-eva-icons";
+import { Link } from "@reach/router";
 
 class SideBar extends React.Component {
   shortenDescription(description) {
@@ -67,13 +69,15 @@ class SideBar extends React.Component {
                   <div className="contentDescription">
                     {this.shortenDescription(context.msSelected.description)}
                   </div>
-                  <div className="contentInfo">
-                    <ClockOutline />
-                    {context.msSelected.runtime}
-                  </div>
-                  <div className="contentInfo">
-                    <AwardOutline />
-                    {context.msSelected.rating}
+                  <div className="contentInfoWrapper">
+                    <div className="contentInfo">
+                      <ClockOutline />
+                      {context.msSelected.runtime}
+                    </div>
+                    <div className="contentInfo">
+                      <AwardOutline />
+                      {context.msSelected.rating}
+                    </div>
                   </div>
                 </div>
 
@@ -106,6 +110,15 @@ class SideBar extends React.Component {
                         </button>
                       );
                   })()}
+
+                  <Link
+                    type="button"
+                    className="btn"
+                    to={`/detail/${context.msSelected.type}/${context.msSelected.id}`}
+                  >
+                    <EyeOutline />
+                    <span className="hint">More details</span>
+                  </Link>
                 </div>
               </div>
             </div>
